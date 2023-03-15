@@ -1,0 +1,12 @@
+footer {
+	margin: 50px 0;
+	text-align: center;
+}
+
+footer a {
+	color: #fff;
+}
+
+footer a:hover {
+	color: #ccc;
+}
