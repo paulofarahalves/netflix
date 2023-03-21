@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Tmdb from '../../helpers/Tmdb';
-import MovieRow from '../../components/MovieRow';
-import FeaturedMovie from '../../components/FeaturedMovie';
+import React, { useContext, useEffect, useState } from 'react';
 import './style.css';
+import Tmdb from '../../helpers/Tmdb';
 import Header from '../../components/Header';
+import FeaturedMovie from '../../components/FeaturedMovie';
+import MovieRow from '../../components/MovieRow';
 import Footer from '../../components/Footer';
+import Modal from '../../components/Modal';
+import ModalContext from '../../contexts/ModalContext';
 
 const Page = () => {
 	const [movieList, setMovieList] = useState([]);
@@ -12,12 +14,14 @@ const Page = () => {
 	const [blackHeader, setBlackHeader] = useState(false);
 	const [loading, setLoading] = useState(false);
 
+	const { openModal } = useContext(ModalContext);
+
 	useEffect(() => {
 		setLoading(true);
+
 		const loadAll = async () => {
 			let list = await Tmdb.getHomeList();
 			setMovieList(list);
-
 			setLoading(false);
 
 			let originals = list.filter((i) => i.slug === 'originals');
@@ -58,14 +62,24 @@ const Page = () => {
 	return (
 		<div className="page">
 			<Header black={blackHeader} />
+
 			{featuredData && <FeaturedMovie item={featuredData} />}
 
 			<section className="lists">
 				{movieList.map((i, k) => (
-					<MovieRow key={k} title={i.title} items={i.items} />
+					<MovieRow
+						key={k}
+						title={i.title}
+						items={i.items}
+						type={i.type}
+					/>
 				))}
 			</section>
+
+			{openModal && <Modal />}
+
 			<Footer />
+
 			{loading && (
 				<div className="loading">
 					<img

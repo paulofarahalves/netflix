@@ -1,0 +1,148 @@
+#background {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgb(0, 0, 0, 0.5);
+	z-index: 1000;
+}
+
+#close {
+	position: fixed;
+	top: 0;
+	right: 0;
+	margin: 5px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	text-align: center;
+	cursor: pointer;
+	border: none;
+	font-size: 20px;
+	background-color: #181818;
+	color: #fff;
+	z-index: 9999999;
+}
+
+#close:hover {
+	background-color: #464646;
+}
+
+button {
+	background-color: transparent;
+}
+
+#modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 800px;
+	height: 700px;
+	border-radius: 10px;
+	background-color: #181818;
+}
+
+#video {
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+.videoBackground {
+	position: absolute;
+	z-index: 9999;
+	height: 450px;
+	width: inherit;
+	background: linear-gradient(to top, #181818 10%, transparent 90%);
+}
+
+.videoTitle {
+	position: absolute;
+	z-index: 9999;
+	margin-left: 50px;
+	margin-top: -180px;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+#modal .playButton {
+	position: absolute;
+	z-index: 9999;
+	margin-left: 50px;
+	margin-top: -110px;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 12px 25px;
+	border-radius: 5px;
+	text-decoration: none;
+	opacity: 1;
+	transition: all ease 0.2s;
+	background-color: #fff;
+	color: #000;
+}
+
+#modal .playButton:hover {
+	opacity: 0.7;
+}
+
+.videoInfo {
+	position: absolute;
+	z-index: 9999;
+	display: grid;
+	width: 100%;
+	height: 280px;
+	grid-template-columns: 2fr 1fr;
+	margin-top: -30px;
+	padding: 0 50px;
+}
+
+.leftSide {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	align-items: flex-start;
+	padding-right: 50px;
+}
+
+.leftSide--top {
+	display: flex;
+	margin-bottom: 30px;
+}
+.leftSide--top span {
+	margin-right: 15px;
+}
+
+.leftSide--top div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 15px;
+}
+
+.leftSide--bottom p {
+	line-height: 30px;
+}
+
+.player-feature-badge {
+	border: 1px solid hsla(0, 0%, 100%, 0.4);
+	border-radius: 3px;
+	color: hsla(0, 0%, 100%, 0.9);
+	font-size: 0.7em;
+	padding: 0 0.5em;
+	white-space: nowrap;
+	height: 17px;
+}
+
+.rightSide span {
+	color: #777;
+}
+
+.rightSide div {
+	margin-bottom: 30px;
+}
+
+@media (max-width: 760px) {
+}

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
+import { Link } from 'react-router-dom';
+import Tmdb from '../../helpers/Tmdb';
 
 const FeaturedMovie = ({ item }) => {
 	let firstDate = new Date(item.first_air_date);
@@ -11,6 +13,31 @@ const FeaturedMovie = ({ item }) => {
 	let description = item.overview;
 	if (description.length > 300) {
 		description = description.substring(0, 300) + '...';
+	}
+
+	const [videoInfo, setVideoInfo] = useState();
+
+	useEffect(() => {
+		const loadVideoInfo = async () => {
+			let videoInformation = await Tmdb.getVideoInfo(item.id, 'tv');
+			setVideoInfo(videoInformation);
+		};
+		loadVideoInfo();
+	}, [item]);
+
+	let trailer = [];
+	let videoId = 'none';
+
+	if (videoInfo && videoInfo.results?.length > 0) {
+		trailer = videoInfo.results.filter((item) =>
+			item.name.includes('Trailer')
+		);
+
+		if (trailer.length > 0) {
+			videoId = trailer[0].key;
+		} else {
+			videoId = videoInfo.results[0].key;
+		}
 	}
 
 	return (
@@ -36,18 +63,18 @@ const FeaturedMovie = ({ item }) => {
 						</div>
 						<div className="description">{description}</div>
 						<div className="buttons">
-							<a
-								href={`/watch/${item.id}`}
+							<Link
+								to={`/watch/${videoId}`}
 								className="playButton"
 							>
-								▶ Play
-							</a>
-							<a
+								▶ Watch
+							</Link>
+							{/*<a
 								href={`/list/add/${item.id}`}
 								className="myListButton"
 							>
 								+ My List
-							</a>
+							</a> */}
 						</div>
 						<div className="genres">
 							<strong>Genres:</strong> {genres.join(', ')}

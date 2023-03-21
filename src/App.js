@@ -1,9 +1,25 @@
-import React from 'react';
-import Home from './pages/Home';
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import Home from './pages/Home';
+import Watch from './pages/Watch';
+import VideoContext from './contexts/VideoContext';
+import ModalContext from './contexts/ModalContext';
 
 const App = () => {
-	return <Home />;
+	const [video, setVideo] = useState({});
+	const [openModal, setOpenModal] = useState(false);
+
+	return (
+		<ModalContext.Provider value={{ openModal, setOpenModal }}>
+			<VideoContext.Provider value={{ video, setVideo }}>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/watch/:id" element={<Watch />} />
+				</Routes>
+			</VideoContext.Provider>
+		</ModalContext.Provider>
+	);
 };
 
 export default App;

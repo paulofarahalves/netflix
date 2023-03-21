@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './style.css';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import ModalContext from '../../contexts/ModalContext';
+import VideoContext from '../../contexts/VideoContext';
 
-const MovieRow = ({ title, items }) => {
+const MovieRow = ({ title, items, type }) => {
+	const { setOpenModal } = useContext(ModalContext);
+	const { setVideo } = useContext(VideoContext);
+
 	const [scrollX, setScrollX] = useState(0);
 	const handleLeftArrow = () => {
 		let x = scrollX + Math.round(window.innerWidth / 2);
 		if (x > 0) {
 			x = 0;
 		}
+
 		setScrollX(x);
 	};
 
@@ -42,7 +48,15 @@ const MovieRow = ({ title, items }) => {
 				>
 					{items.results.length > 0 &&
 						items.results.map((i, k) => (
-							<div key={k} className="item">
+							<div
+								key={k}
+								className="item"
+								onClick={() => {
+									setOpenModal(true);
+									i.type = type;
+									setVideo(i);
+								}}
+							>
 								<img
 									src={`https://image.tmdb.org/t/p/w300${i.poster_path}`}
 									alt={title.original_title}
