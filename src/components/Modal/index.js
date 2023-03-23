@@ -136,7 +136,10 @@ const Modal = () => {
 								: video.original_name}
 						</div>
 
-						<Link to={`/watch/${videoId}`} className="playButton">
+						<Link
+							to={`/netflix/watch/${videoId}`}
+							className="playButton"
+						>
 							▶ Watch
 						</Link>
 

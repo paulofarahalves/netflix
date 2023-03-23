@@ -64,7 +64,7 @@ const FeaturedMovie = ({ item }) => {
 						<div className="description">{description}</div>
 						<div className="buttons">
 							<Link
-								to={`/watch/${videoId}`}
+								to={`/netflix/watch/${videoId}`}
 								className="playButton"
 							>
 								▶ Watch

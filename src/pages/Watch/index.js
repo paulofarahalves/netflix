@@ -4,8 +4,10 @@ import YouTube from 'react-youtube';
 
 export default function Watch() {
 	const location = useLocation();
-	let idIndex = location.pathname.indexOf('/', 1);
-	let videoId = location.pathname.substring(idIndex);
+	let idIndex = location.pathname.indexOf('/', 9);
+	let videoId = location.pathname.substring(idIndex).substring(1);
+
+	//const { videoId } = useParams();
 
 	const opts = {
 		height: 0.995 * window.innerHeight,

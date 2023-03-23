@@ -14,8 +14,8 @@ const App = () => {
 		<ModalContext.Provider value={{ openModal, setOpenModal }}>
 			<VideoContext.Provider value={{ video, setVideo }}>
 				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/watch/:id" element={<Watch />} />
+					<Route path="/netflix/" element={<Home />} />
+					<Route path="/netflix/watch/:id" element={<Watch />} />
 				</Routes>
 			</VideoContext.Provider>
 		</ModalContext.Provider>
