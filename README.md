@@ -1,14 +1,14 @@
-Netflix clone using React and API
+# Netflix clone using React and API
 
-Installation
+### Installation
 
-### `npm install`
+`npm install`
 
-In the project directory, you can run:
+### In the project directory, you run:
 
-### `npm start`
+`npm start`
 
-Usage:
+### Usage:
 
 https://paulofarahalves.github.io/netflix/
 
